@@ -1,0 +1,42 @@
+[
+  {
+    "color": "default",
+    "type": "arceus",
+    "size": "medium",
+    "name": "Arceus",
+    "generation": "gen4",
+    "originalSpriteSize": 64
+  },
+  {
+    "color": "default",
+    "type": "giratina",
+    "size": "medium",
+    "name": "Giratina",
+    "generation": "gen4",
+    "originalSpriteSize": 64
+  },
+  {
+    "color": "default",
+    "type": "dialga",
+    "size": "medium",
+    "name": "Dialga",
+    "generation": "gen4",
+    "originalSpriteSize": 64
+  },
+  {
+    "color": "default",
+    "type": "palkia",
+    "size": "medium",
+    "name": "Palkia",
+    "generation": "gen4",
+    "originalSpriteSize": 64
+  },
+  {
+    "color": "default",
+    "type": "giratina_origin",
+    "size": "medium",
+    "name": "Giratina",
+    "generation": "gen4",
+    "originalSpriteSize": 64
+  }
+]
