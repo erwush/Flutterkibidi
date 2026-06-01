@@ -1,4 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:lapak_bantul/home_page.dart';
+import 'package:lapak_bantul/home_page_part2.dart';
+import 'package:lapak_bantul/pbb1.dart';
+import 'package:lapak_bantul/pbb2.dart';
+import 'package:lapak_bantul/layanan_keliling.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 class DetailSPPT extends StatelessWidget {
   const DetailSPPT({super.key});
@@ -10,11 +17,102 @@ class DetailSPPT extends StatelessWidget {
         centerTitle: true,
         shadowColor: Colors.black,
         elevation: 4,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios),
-          onPressed: () {
-            Navigator.pop(context);
-          },
+      ),
+     drawer: Drawer(
+        child: Column(
+          children: [
+            Expanded(
+              child: ListView(
+                padding: EdgeInsets.zero,
+                children: [
+                   DrawerHeader(
+                    decoration: BoxDecoration(color: Color(0xFF003566)),
+                    child:  Image.asset(
+                              'assets/images/LalyLogoW.png',
+                              width: 150.0,
+                              height: 100.0,
+                              fit: BoxFit.contain,
+                            ),
+                  ),
+                  ListTile(
+                    title: const Text('Home Page'),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const HomePage(),
+                        ),
+                      );
+                    },
+                  ),
+                  ListTile(
+                    title: const Text('Home Page 2'),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const HomePage2(),
+                        ),
+                      );
+                    },
+                  ),
+                  ListTile(
+                    title: const Text('Layanan Keliling'),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const LayananKeliling(),
+                        ),
+                      );
+                    },
+                  ),
+                  ListTile(
+                    title: const Text('PBB 1'),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const PBB1()),
+                      );
+                    },
+                  ),
+                  ListTile(
+                    title: const Text('PBB 2'),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const PBB2()),
+                      );
+                    },
+                  ),
+                  ListTile(
+                    title: const Text('Detail SPPT'),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const DetailSPPT(),
+                        ),
+                      );
+                    },
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                  Navigator.pop(context);
+                },
+                style: ElevatedButton.styleFrom(
+                  minimumSize: const Size(double.infinity, 50),
+                ),
+                child: const Text('< Kembali'),
+              ),
+            ),
+          ],
         ),
       ),
       body: SingleChildScrollView(
@@ -29,7 +127,7 @@ class DetailSPPT extends StatelessWidget {
             ),
             SizedBox(height: 10),
             Text(
-              "AHMAD NABIL BAHROIN ROGER SUMATRA",
+              "NAGETKIBIDI GORENG TEPUNG ENAK SEDAP MANTAP",
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
             ),
             SizedBox(height: 10),
@@ -43,7 +141,7 @@ class DetailSPPT extends StatelessWidget {
                   ),
                   TextSpan(
                     text:
-                        "Kab Bantul, Kec. Sewon, DS. Ngireng-ireng, RT01/RW01",
+                        "Kab Ini, Kec. Itu, Desa sana, RT00/RW00",
                   ),
                 ],
               ),
@@ -58,7 +156,7 @@ class DetailSPPT extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SizedBox(height: 20),
-                      _buildDetail("Lokasi", "DS. Ngireng-ireng, RT01/RW01"),
+                      _buildDetail("Lokasi", "DS. Asimilasi Songgon-Ketapang, RT06/RW07"),
                       Text(
                         "Status",
                         style: const TextStyle(
@@ -85,11 +183,11 @@ class DetailSPPT extends StatelessWidget {
                         ),
                       ),
                       Divider(color: Colors.black),
-                      _buildDetail("Denda", "Rp. 0"),
-                      _buildDetail("NJOP Bumi", "Rp. 300,000"),
-                      _buildDetail("NJOP Bangunan", "Rp.0"),
-                      _buildDetail("Luas Bumi", "227m"),
-                      _buildDetail("Luas Bangunan", "227m"),
+                      _buildDetail("Denda", "Rp. 99999999999"),
+                      _buildDetail("NJOP Bumi", "Rp. 67676767"),
+                      _buildDetail("NJOP Bangunan", "Rp.Gratis"),
+                      _buildDetail("Luas Bumi", "Gk tau"),
+                      _buildDetail("Luas Bangunan", "Segitu"),
                     ],
                   ),
                 ],

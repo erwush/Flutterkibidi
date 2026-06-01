@@ -1,189 +1,86 @@
 import 'package:flutter/material.dart';
+import 'package:lapak_bantul/anu2.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-class HomePage2 extends StatelessWidget {
-  const HomePage2({super.key});
+class NuggetPage extends StatelessWidget {
+  const NuggetPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
         children: [
-          Container(height: 260, color: const Color(0xFF003566)),
-          SafeArea(
+          // Background nugget full layar
+          SizedBox.expand(
+            child: Image.asset('images/naget.jpg', fit: BoxFit.cover),
+          ),
+
+          // Overlay gelap biar teks kebaca
+          Container(color: Colors.black.withOpacity(0.4)),
+
+          // Konten utama
+          Center(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
-              child: Row(
+              padding: const EdgeInsets.all(24.0),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
                 children: [
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Text(
-                          'LaPak Bantul',
-                          style: TextStyle(
-                            fontSize: 28,
-                            color: Color(0xFFE9E7E5),
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        SizedBox(height: 8),
-                        Text(
-                          'Pusat layanan pajak terpadu',
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: Color(0xFFE9E7E5),
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ],
+                  Text(
+                    "TS IS NAGET",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 36,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.orange.shade200,
+                      letterSpacing: 2,
                     ),
                   ),
-                 Container(
-                        width: 80,
-                        height: 80,
-                        decoration: BoxDecoration(
-                          color: Colors.yellow[500],
-                          shape: BoxShape.circle,
-                          border: Border.all(color: Colors.blue, width: 2),
-                        ),
-                        child: Image.asset(
-                          'assets/images/Group10.png',
-                          width: 120.0,
-                          height: 120.0,
-                          fit: BoxFit.fill,
-                        ),
+                  const SizedBox(height: 20),
+                  Text(
+                    "Naget itu enak\n"
+                    "Naget itu mantap\n"
+                    "Naget itu sedap\n"
+                    "Nagetkibidi skibidi skibidi naget\n"
+                    "Naget 67",
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                      fontSize: 16,
+                      color: Colors.white,
+                      height: 1.6,
+                    ),
+                  ),
+                  const SizedBox(height: 30),
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 20,
+                      vertical: 10,
+                    ),
+                    decoration: BoxDecoration(
+                      color: Colors.orangeAccent,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const NuggetPage2(),
+                          ),
+                        );
+                      },
+                      child: Text(
+                      "NAGET(ini bukan tombol, gk bisa dipencet)",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
                       ),
+                    ),
+                    )
+                  ),
                 ],
               ),
             ),
-          ),
-          Positioned(
-            top: 170,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            child: Container(
-              padding: const EdgeInsets.all(20),
-              decoration: const BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(30),
-                  topRight: Radius.circular(30),
-                ),
-              ),
-              child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    GridView.count(
-                      crossAxisCount: 2,
-                      shrinkWrap: true,
-                      physics: NeverScrollableScrollPhysics(),
-                      crossAxisSpacing: 16,
-                      mainAxisSpacing: 16,
-                      children: [
-                        _buildMenuItem(
-                          "BPHTB",
-                          Icons.description,
-                          const Color(0xFFDFE3E7),
-                        ),
-                        _buildMenuItem(
-                          "BPHTB",
-                          Icons.description,
-                          const Color(0xFFDFE3E7),
-                        ),
-                        _buildMenuItem(
-                          "BPHTB",
-                          Icons.description,
-                          const Color(0xFFDFE3E7),
-                        ),
-                        _buildMenuItem(
-                          "BPHTB",
-                          Icons.description,
-                          const Color(0xFFDFE3E7),
-                        ),
-                      ],
-                    ),
-
-                    const SizedBox(height: 20),
-
-                    Container(
-                      padding: const EdgeInsets.all(16),
-                      decoration: BoxDecoration(
-                        color: const Color(0xFF003566),
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: const [
-                          Text(
-                            "Layanan keliling",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          Icon(
-                            Icons.arrow_forward_ios,
-                            color: Colors.white,
-                            size: 16,
-                          ),
-                        ],
-                      ),
-                    ),
-
-                    const SizedBox(height: 24),
-
-                    const Text(
-                      "Informasi pajak",
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-
-                    const SizedBox(height: 16),
-
-                    Container(
-                      height: 150,
-                      decoration: BoxDecoration(
-                        color: Colors.grey,
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildMenuItem(String title, IconData icon, Color color) {
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: color,
-        borderRadius: BorderRadius.circular(20),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.05),
-            blurRadius: 10,
-            offset: const Offset(0, 5),
-          ),
-        ],
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(icon, size: 36, color: const Color(0xFF003566)),
-          const SizedBox(height: 10),
-          Text(
-            title,
-            textAlign: TextAlign.center,
-            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
           ),
         ],
       ),

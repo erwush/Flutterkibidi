@@ -1,9 +1,13 @@
-import 'package:flutter/material.dart';
+  import 'package:flutter/material.dart';
 import 'package:lapak_bantul/home_page_part2.dart';
 import 'package:lapak_bantul/pbb1.dart';
 import 'package:lapak_bantul/pbb2.dart';
 import 'package:lapak_bantul/layanan_keliling.dart';
 import 'package:lapak_bantul/detail_sppt.dart';
+import 'package:lapak_bantul/anu.dart';
+import 'package:lapak_bantul/logister.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -18,8 +22,15 @@ class HomePage extends StatelessWidget {
         ),
         actions: [
           IconButton(
-            icon: Image.asset('assets/images/Ellipse6.png'),
-            onPressed: () {},
+            icon: Image.asset('assets/images/naget.jpg',),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const NuggetPage(),
+                ),
+              );
+            },
           ),
         ],
         centerTitle: false,
@@ -31,17 +42,25 @@ class HomePage extends StatelessWidget {
               child: ListView(
                 padding: EdgeInsets.zero,
                 children: [
-                  const DrawerHeader(
+                   DrawerHeader(
                     decoration: BoxDecoration(color: Color(0xFF003566)),
-                    child: Text(
-                      'LaPak Bantul',
-                      style: TextStyle(
-                        fontSize: 28,
-                        color: Color(0xFFE9E7E5),
-                        fontWeight: FontWeight.bold,
-                      ),
-                      textAlign: TextAlign.left,
-                    ),
+                    child:  Image.asset(
+                              'assets/images/LalyLogoW.png',
+                              width: 150.0,
+                              height: 100.0,
+                              fit: BoxFit.contain,
+                            ),
+                  ),
+                  ListTile(
+                    title: const Text('Home Page'),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const HomePage(),
+                        ),
+                      );
+                    },
                   ),
                   ListTile(
                     title: const Text('Home Page 2'),
@@ -94,6 +113,17 @@ class HomePage extends StatelessWidget {
                       );
                     },
                   ),
+                  ListTile(
+                    title: const Text('Logister'),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const Logister(),
+                        ),
+                      );
+                    },
+                  ),
                 ],
               ),
             ),
@@ -123,7 +153,6 @@ class HomePage extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 24.0,
-                    vertical: 24.0,
                   ),
                   width: double.infinity,
                   height: 217.0,
@@ -138,18 +167,15 @@ class HomePage extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            Text(
-                              'LaPak Bantul',
-                              style: TextStyle(
-                                fontSize: 28,
-                                color: Color(0xFFE9E7E5),
-                                fontWeight: FontWeight.bold,
-                              ),
-                              textAlign: TextAlign.left,
+                           //reserve aspect 
+                            Image.asset(
+                              'assets/images/LalyLogoW.png',
+                              width: 150.0,
+                              height: 150.0,
+                              fit: BoxFit.contain,
                             ),
-                            SizedBox(height: 8),
                             Text(
-                              'Pusat Layanan Pajak Terpadu',
+                              'Pelanggan No. 1',
                               style: TextStyle(
                                 fontSize: 14,
                                 color: Color(0xFFE9E7E5),

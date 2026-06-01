@@ -1,4 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:lapak_bantul/home_page.dart';
+import 'package:lapak_bantul/home_page_part2.dart';
+import 'package:lapak_bantul/pbb1.dart';
+import 'package:lapak_bantul/pbb2.dart';
+import 'package:lapak_bantul/detail_sppt.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 class LayananKeliling extends StatelessWidget {
   const LayananKeliling({super.key});
@@ -8,17 +15,108 @@ class LayananKeliling extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
 
         title: const Text(
           'Layanan Keliling',
           textAlign: TextAlign.center,
           style: TextStyle(fontWeight: FontWeight.bold),
+        ),
+      ),
+    drawer: Drawer(
+        child: Column(
+          children: [
+            Expanded(
+              child: ListView(
+                padding: EdgeInsets.zero,
+                children: [
+                   DrawerHeader(
+                    decoration: BoxDecoration(color: Color(0xFF003566)),
+                    child:  Image.asset(
+                              'assets/images/LalyLogoW.png',
+                              width: 150.0,
+                              height: 100.0,
+                              fit: BoxFit.contain,
+                            ),
+                  ),
+                  ListTile(
+                    title: const Text('Home Page'),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const HomePage(),
+                        ),
+                      );
+                    },
+                  ),
+                  ListTile(
+                    title: const Text('Home Page 2'),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const HomePage2(),
+                        ),
+                      );
+                    },
+                  ),
+                  ListTile(
+                    title: const Text('Layanan Keliling'),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const LayananKeliling(),
+                        ),
+                      );
+                    },
+                  ),
+                  ListTile(
+                    title: const Text('PBB 1'),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const PBB1()),
+                      );
+                    },
+                  ),
+                  ListTile(
+                    title: const Text('PBB 2'),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const PBB2()),
+                      );
+                    },
+                  ),
+                  ListTile(
+                    title: const Text('Detail SPPT'),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const DetailSPPT(),
+                        ),
+                      );
+                    },
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                  Navigator.pop(context);
+                },
+                style: ElevatedButton.styleFrom(
+                  minimumSize: const Size(double.infinity, 50),
+                ),
+                child: const Text('< Kembali'),
+              ),
+            ),
+          ],
         ),
       ),
       body: Container(
